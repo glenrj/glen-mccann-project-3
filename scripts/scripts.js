@@ -25,14 +25,9 @@ $(function () {
             // add player names to array
             tournament.players = [];
 
-            tournament.players.push($('#player1').val());
-            tournament.players.push($('#player2').val());
-            tournament.players.push($('#player3').val());
-            tournament.players.push($('#player4').val());
-            tournament.players.push($('#player5').val());
-            tournament.players.push($('#player6').val());
-            tournament.players.push($('#player7').val());
-            tournament.players.push($('#player8').val());
+            for (i = 0; i < tournament.numOfPlayers; i++) {
+                tournament.players.push($(`#player${i + 1}`).val());
+            }
 
             // add a new round to html
             tournament.round++
