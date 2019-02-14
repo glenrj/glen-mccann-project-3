@@ -4,3 +4,14 @@
 html {
     font-size: 125%;
 }
+
+.wrapper {
+    max-width: 1600px;
+}
+
+button {
+    padding: 2%;
+    border: 1px solid cyan;
+    text-transform: uppercase;
+    @include font-size(16);
+}
