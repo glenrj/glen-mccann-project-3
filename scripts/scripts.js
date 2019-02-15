@@ -34,11 +34,11 @@ tournament.newRound = () => {
     tournament.round++
     $('.matchups').append(`<h3>Round ${tournament.round}</h3>
     <div class="round${tournament.round} round"></div>`);
-    console.log('added round');
+    // console.log('added round');
 
     let match = 0;
 
-    for (i = 0; i < tournament.players.length; i += 2) {
+    for (let i = 0; i < tournament.players.length; i += 2) {
         match = match + 1
 
         $(`.round${tournament.round}`).append(`
@@ -59,33 +59,58 @@ tournament.newRound = () => {
     $('.matchups').append(` <button class="winnerRound${tournament.round}">Confirm Winners</button>
     </div>`)
 
-    tournament.roundWinner(match);
+    tournament.roundWinner();
 
 }
 
 
-tournament.roundWinner = (match) => {
+tournament.roundWinner = () => {
     $(`.winnerRound${tournament.round}`).on('click', function (e) {
         e.preventDefault(e);
 
-        console.log('submitted', match);
+        $(`.round${tournament.round}`).addClass('completed');
 
-
-        // for (i = 0; i < tournament.players.length; i += 2) {
-            
-        // }
-
-        $('input[type="radio"]:not(:checked)').addClass('eliminated');
-
-        $('.eliminated').val();
         
+        // tracking which match is being evaluated
+        let match = 0;
+        let eliminatedArray = [];
+        console.log(tournament.players.length);
+        for (let i = 0; i < tournament.players.length; i += 2) {
+            match = match + 1;
+
+            // get name of the loser and add a value of eliminated to their object in the namespace object
+            let elim = $(`input[name=round${tournament.round}Match${match}]:not(:checked)`);
+            // console.log('checking for elim value', elim);
+            let elimValue = elim[0].value;
+            // let elimIndex = tournament.players.indexOf(elimValue);
+            eliminatedArray.push(elimValue);
 
 
+            //push the value to an emilinated array
+        }
+        console.log(eliminatedArray)
 
-            //     
-        
-    
+        //loops through eliminated array and pull those people from the main one.
+
+        // tournament.players.splice(elimIndex, 1);
+        // console.log(tournament.players);
+
+        // create an array of only the eliminated people
+        // let elimArray = tournament.players.filter((person) => {
+        //     return [person].eliminated
+        // });
+
+        // console.log(elimArray);
+
+        // remove the eliminated players from the players array to remove them from the next round
+        // elimArray.forEach((player) => {
+        //     let index = tournament.players.indexOf(player);
+        //     tournament.players.splice(index, 1);
+        // }) 
+
+        tournament.newRound();
         })
+
 }
 // document ready
 $(function () {

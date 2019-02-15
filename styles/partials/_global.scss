@@ -3,6 +3,8 @@
 
 html {
     font-size: 125%;
+    font-family: 'Asap', sans-serif;
+    background: $background;
 }
 
 .wrapper {
@@ -15,4 +17,23 @@ button,
     // border: 1px solid cyan;
     text-transform: uppercase;
     @include font-size(16);
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    color: $header;
+}
+
+fieldset {
+    border: none;
+    padding-left: 0;
+}
+
+[type=text] {
+    color: $accent;
+    padding: 2px;
+    @include font-size(18);
 }

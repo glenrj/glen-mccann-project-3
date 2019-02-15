@@ -5,3 +5,11 @@ header {
     background-position: center;
     height: 50vh;
 }
+
+h1 {
+    color: $primary;
+    margin: 0;
+    padding: 2% 5%;
+    text-align: center;
+    @include font-size(50);
+}
