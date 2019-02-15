@@ -1,5 +1,5 @@
 .bracket {
-    background: blue;
+    // background: blue;
     // display: flex;
     .round {
         border: 1px solid black;
@@ -8,12 +8,29 @@
         justify-content: space-evenly;
         flex-wrap: wrap;
         .match {
-            border: 1px solid aqua;
+            border: 1px solid maroon;
             min-width: 100px;
             flex-basis: 300px;
             padding: 2%;
             display: flex;
             flex-direction: column;
         }
+    }
+}
+
+.pair {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.matchups {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    // border: 1px solid green;
+    .button {
+        display: inline-block;
+        margin: 0 auto;
     }
 }

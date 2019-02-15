@@ -35,54 +35,64 @@ tournament.newRound = () => {
     $('.matchups').append(`<h3>Round ${tournament.round}</h3>
     <div class="round${tournament.round} round"></div>`);
     console.log('added round');
-    
+
+    let match = 0;
+
     for (i = 0; i < tournament.players.length; i += 2) {
-        console.log(i);
-        let round = tournament.round;
-        $(`.round${tournament.round}`).append(`<div class="round${tournament.round}Match${i + 1} match">
-        <div class="pair">
-        <label for="${tournament.players[i]}">${tournament.players[i]}</label>
-        <input type="radio" name="round${tournament.round}Match${i + 1}" id="${tournament.players[i]}"
-        value="${tournament.players[i]}">
-        
-        <label for="${tournament.players[i + 1]}">${tournament.players[i + 1]}</label>
-        <input type="radio" name="round${tournament.round}Match${i + 1}" id="${tournament.players[i + 1]}"
-        value="${tournament.players[i + 1]}">
-        </div>
-        
-        <button class="winnerRound${tournament.round}Match${i + 1}">Confirm Winner</buttom>
-        </div>`);
+        match = match + 1
+
+        $(`.round${tournament.round}`).append(`
+            <div class="round${tournament.round}Match${match} match">
+                <div class="pair">
+                    <label for="${tournament.players[i]}">${tournament.players[i]}</label>
+                    <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.players[i]}"
+                    value="${tournament.players[i]}">
+                    
+                    <label for="${tournament.players[i + 1]}">${tournament.players[i + 1]}</label>
+                    <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.players[i + 1]}"
+                    value="${tournament.players[i + 1]}">
+                </div>
+            </div>
+       `);
     }
-    
-        tournament.roundWinner = () => {
-            $(`.winnerRound${tournament.round}Match${i + 1}`).on('submit', function(e) {
-                e.preventDefault();
-        
-                
-            })
-    }
+
+    $('.matchups').append(` <button class="winnerRound${tournament.round}">Confirm Winners</button>
+    </div>`)
+
+    tournament.roundWinner(match);
+
 }
 
 
+tournament.roundWinner = (match) => {
+    $(`.winnerRound${tournament.round}`).on('click', function (e) {
+        e.preventDefault(e);
+
+        console.log('submitted', match);
+
+
+        // for (i = 0; i < tournament.players.length; i += 2) {
+            
+        // }
+
+        $('input[type="radio"]:not(:checked)').addClass('eliminated');
+
+        $('.eliminated').val();
+        
+
+
+
+            //     
+        
+    
+        })
+}
 // document ready
 $(function () {
-    
+
     $('form').on('submit', function (e) {
         e.preventDefault();
         tournament.setup();
-        tournament.newRound();        
+        tournament.newRound();
     });
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-
 });

@@ -9,9 +9,10 @@ html {
     max-width: 1600px;
 }
 
-button {
-    padding: 2%;
-    border: 1px solid cyan;
+button,
+[type=submit] {
+    padding: 1%;
+    // border: 1px solid cyan;
     text-transform: uppercase;
     @include font-size(16);
 }
