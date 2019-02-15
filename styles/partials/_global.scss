@@ -3,7 +3,6 @@
 
 html {
     font-size: 125%;
-    font-family: 'Asap', sans-serif;
     background: $background;
 }
 
@@ -15,18 +14,29 @@ button,
 [type=submit] {
     padding: 1%;
     text-transform: uppercase;
-    width: 250px;
-    @include font-size(16);
+    min-width: 250px;
+    @include font-size(20);
     background: $primary;
     color: $background;
     border: 1px solid $primary;
     transition: 0.2s;
     border-radius: 5px;
-    margin: 10px 0px;
+    margin: 10px auto;
+    font-family: 'Raleway', sans-serif;
     &:hover {
         color: $primary;
         background: $background;
     }
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Lobster', sans-serif;
+}
+
+label {
+    font-family: 'Raleway', sans-serif;
 }
 
 h2 {
@@ -35,10 +45,12 @@ h2 {
     padding-top: 5%;
     padding-bottom: 2%;
     color: $header;
+    // @include font-size();
 }
 
 h3 {
     color: $header;
+    line-height: 1.6;
 }
 
 fieldset {

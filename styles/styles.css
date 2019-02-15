@@ -147,7 +147,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 html {
   font-size: 125%;
-  font-family: 'Asap', sans-serif;
   background: #EFE3E2; }
 
 .wrapper {
@@ -157,9 +156,9 @@ button,
 [type=submit] {
   padding: 1%;
   text-transform: uppercase;
-  width: 250px;
-  font-size: 16px;
-  font-size: 0.8rem;
+  min-width: 250px;
+  font-size: 20px;
+  font-size: 1rem;
   background: #40376e;
   color: #EFE3E2;
   border: 1px solid #40376e;
@@ -167,11 +166,20 @@ button,
   -o-transition: 0.2s;
   transition: 0.2s;
   border-radius: 5px;
-  margin: 10px 0px; }
+  margin: 10px auto;
+  font-family: 'Raleway', sans-serif; }
   button:hover,
   [type=submit]:hover {
     color: #40376e;
     background: #EFE3E2; }
+
+h1,
+h2,
+h3 {
+  font-family: 'Lobster', sans-serif; }
+
+label {
+  font-family: 'Raleway', sans-serif; }
 
 h2 {
   margin: 0;
@@ -181,7 +189,8 @@ h2 {
   color: #36558f; }
 
 h3 {
-  color: #36558f; }
+  color: #36558f;
+  line-height: 1.6; }
 
 fieldset {
   border: none;
@@ -220,7 +229,31 @@ h1 {
   flex-direction: column;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center; }
+  justify-content: center;
+  padding: 10px; }
+  .setup h2 {
+    padding: 0px;
+    padding-bottom: 5px; }
+
+.nameForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.tournamentNameFieldset {
+  text-align: center; }
+  .tournamentNameFieldset label {
+    font-size: 25px;
+    font-size: 1.25rem; }
+  .tournamentNameFieldset [type=text] {
+    padding: 2px;
+    font-size: 20px;
+    font-size: 1rem;
+    width: 270px; }
 
 .tournamentName {
   min-width: 250px; }
@@ -246,7 +279,6 @@ input#setupTournament {
   margin: 0 auto; }
 
 .bracket .round {
-  border: 1px solid black;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -255,9 +287,11 @@ input#setupTournament {
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  padding-bottom: 15px; }
   .bracket .round .match {
-    border: 1px solid maroon;
+    border: 3px solid #48233c;
+    border-radius: 5px;
     min-width: 100px;
     -ms-flex-preferred-size: 300px;
     flex-basis: 300px;
@@ -268,7 +302,8 @@ input#setupTournament {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column; }
+    flex-direction: column;
+    margin-bottom: 10px; }
 
 .pair {
   display: -webkit-box;
@@ -278,6 +313,10 @@ input#setupTournament {
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 10px; }
+  .pair .option {
+    width: 45%; }
+    .pair .option label {
+      margin-right: 2%; }
 
 .matchups {
   display: -webkit-box;
@@ -295,6 +334,16 @@ input#setupTournament {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
-  .matchups .button {
-    display: inline-block;
-    margin: 0 auto; }
+  .matchups button {
+    margin-bottom: 40px; }
+
+.results {
+  padding: 25px 0px; }
+  .results p {
+    font-family: 'Lobster', sans-serif;
+    text-align: center;
+    font-size: 40px;
+    font-size: 2rem; }
+  .results span {
+    color: #36558f;
+    font-weight: 700; }

@@ -44,13 +44,16 @@ tournament.newRound = () => {
         $(`.round${tournament.round}`).append(`
             <div class="round${tournament.round}Match${match} match">
                 <div class="pair">
-                    <label for="${tournament.players[i]}">${tournament.players[i]}</label>
-                    <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.players[i]}"
-                    value="${tournament.players[i]}">
-                    
-                    <label for="${tournament.players[i + 1]}">${tournament.players[i + 1]}</label>
-                    <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.players[i + 1]}"
-                    value="${tournament.players[i + 1]}">
+                    <div class="option">
+                        <label for="${tournament.players[i]}">${tournament.players[i]}</label>
+                        <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.players[i]}"
+                        value="${tournament.players[i]}">
+                    </div>
+                    <div>
+                        <label for="${tournament.players[i + 1]}">${tournament.players[i + 1]}</label>
+                        <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.players[i + 1]}"
+                        value="${tournament.players[i + 1]}">
+                    </div>
                 </div>
             </div>
        `);
@@ -96,8 +99,10 @@ tournament.roundWinner = () => {
             let winner = $(`input[name=round${tournament.round}Match${match}]:checked`);
             let winnerName = winner[0].value;
 
-            $('.results').append(`Congratulations, ${winnerName} is the winner!`);
-        }   
+            $('.results').append(`<p><span>${winnerName}</span> is the winner! Congratulations!</p>`);
+        }  else {
+            $('.results').append(`Something has gone wrong! Please refresh the page and start the tournament over. The current non-eliminated players are: ${tournament.players}.`);
+        } 
     })
 
 }
