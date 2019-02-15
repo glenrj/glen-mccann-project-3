@@ -157,14 +157,30 @@ button,
 [type=submit] {
   padding: 1%;
   text-transform: uppercase;
+  width: 250px;
   font-size: 16px;
-  font-size: 0.8rem; }
+  font-size: 0.8rem;
+  background: #40376e;
+  color: #EFE3E2;
+  border: 1px solid #40376e;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  border-radius: 5px;
+  margin: 10px 0px; }
+  button:hover,
+  [type=submit]:hover {
+    color: #40376e;
+    background: #EFE3E2; }
 
 h2 {
   margin: 0;
   padding: 0;
   padding-top: 5%;
   padding-bottom: 2%;
+  color: #36558f; }
+
+h3 {
   color: #36558f; }
 
 fieldset {
@@ -271,7 +287,14 @@ input#setupTournament {
   -ms-flex-pack: center;
   justify-content: center;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
   .matchups .button {
     display: inline-block;
     margin: 0 auto; }
