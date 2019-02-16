@@ -214,6 +214,19 @@ fieldset {
   [type=text]::placeholder {
     color: #96acb7; }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #EFE3E2;
+  border: none;
+  border-bottom: 2px solid #40376e;
+  text-align: center;
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  color: #36558f; }
+
 header {
   background: url(../assets/rock-paper-scissors.jpg);
   background-size: cover;

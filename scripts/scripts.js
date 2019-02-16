@@ -9,7 +9,6 @@ const tournament = {
 
 tournament.setup = () => {
     tournament.numOfPlayers = tournament.numOfPlayers + $('[name=numOfPlayers] option:selected').val();
-    console.log(tournament.numOfPlayers);
 
     if (tournament.numOfPlayers % 2 === 0) {
         // update tournament name
@@ -19,18 +18,21 @@ tournament.setup = () => {
             $('h1').text(tournament.name);
         }
         
+        // remove name and number of players fields to avoid adding too many players
         $('.tournamentNameForm').remove();
+
         // add player name fields
         for (i = 0; i < tournament.numOfPlayers; i++) {
             let playerNum = i + 1;
             $('.players').append(`
                  <div>
-                        <label for="player${playerNum}">Player ${playerNum}:</label>
-                        <input type="text" name="player${playerNum}" id="player${playerNum}" placeholder="Player Name">
-                    </div>
+                    <label for="player${playerNum}">Player ${playerNum}:</label>
+                    <input type="text" name="player${playerNum}" id="player${playerNum}" placeholder="Player Name">
+                </div>
             `);
         }
-        $('.players').append(`<div><input type="submit" value="Add Players" id="addPlayers" class="addPlayers"></div>`);
+
+        $('.players').append(`<div><button type="submit" value="Add Players" id="addPlayers" class="addPlayers">Add Players</button></div>`);
 
         tournament.addPlayersEventHandler();
 
@@ -41,7 +43,6 @@ tournament.setup = () => {
 
 tournament.addPlayers = () => {
     // add player names to array
-
     tournament.players = [];
 
     for (i = 0; i < tournament.numOfPlayers; i++) {
@@ -54,7 +55,7 @@ tournament.addPlayers = () => {
 }
 
 tournament.addPlayersEventHandler = () => {
-    $('.addPlayers').on('submit', function(e) {
+    $('.addPlayers').on('click', function(e) {
         e.preventDefault();
         tournament.addPlayers();
     })
@@ -130,13 +131,26 @@ tournament.roundWinner = () => {
             let winner = $(`input[name=round${tournament.round}Match${match}]:checked`);
             let winnerName = winner[0].value;
 
-            $('.results').append(`<p><span>${winnerName}</span> is the winner! Congratulations!</p>`);
+            $('.results').append(`
+                <p><span>${winnerName}</span> is the winner! Congratulations!</p>
+                <div><button type="submit" class="newTournament">New Tournament</button></div>
+                `);
+
+            newTournamentEventHandler();
         }  else {
             $('.results').append(`Something has gone wrong! Please refresh the page and start the tournament over. The current non-eliminated players are: ${tournament.players}.`);
         } 
     })
-
 }
+
+const newTournamentEventHandler = () => {
+    $('.newTournament').on('click', function(e) {
+        e.preventDefault();
+        location.reload(); 
+
+    });
+}
+
 // document ready
 $(function () {
 

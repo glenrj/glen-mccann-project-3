@@ -71,3 +71,15 @@ fieldset {
         
     }
 }
+
+select {
+    appearance: none;
+    background: $background;
+    border: none;
+    border-bottom: 2px solid $primary;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: $header;
+}
