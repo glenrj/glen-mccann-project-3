@@ -15,47 +15,24 @@
     <main class="wrapper">
         <section class="setup">
             <h2>Tournament Setup</h2>
-            <form action="" class="nameForm">
-                <fieldset class="tournamentNameFieldset">
+            <form action="" class="tournamentNameForm">
                     <label for="tournamentName">Tournament Name:</label>
                     <input type="text" id="tournamentName" placeholder="Amazing Tournament 2019" class="tournamentName">
-                </fieldset>
-                <fieldset class="players">
-                    <div>
-                        <label for="player1">Player One:</label>
-                        <input type="text" name="player1" id="player1" placeholder="Player Name">
-                    </div>
-                    <div>
-                        <label for="player2">Player Two:</label>
-                        <input type="text" name="player2" id="player2" placeholder="Player Name">
-                    </div>
-                    <div>
-                        <label for="player3">Player Three:</label>
-                        <input type="text" name="player3" id="player3" placeholder="Player Name">
-                    </div>
-                    <div>
-                        <label for="player4">Player Four:</label>
-                        <input type="text" name="player4" id="player4" placeholder="Player Name">
-                    </div>
-                    <div>
-                        <label for="player5">Player Five:</label>
-                        <input type="text" name="player5" id="player5" placeholder="Player Name">
-                    </div>
-                    <div>
-                        <label for="player6">Player Six:</label>
-                        <input type="text" name="player6" id="player6" placeholder="Player Name">
-                    </div>
-                    <div>
-                        <label for="player7">Player Seven:</label>
-                        <input type="text" name="player7" id="player7" placeholder="Player Name">
-                    </div>
-                    <div>
-                        <label for="player8">Player Eight:</label>
-                        <input type="text" name="player8" id="player8" placeholder="Player Name">
-                    </div>
-                </fieldset>
-                <input type="submit" value="Organize Tournament" id="setupTournament">
-            </form>
+                    <label for="numOfPlayers">Number of Players:</label>
+                    <select name="numOfPlayers">
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                        <option value="12">12</option>
+                        <option value="14">14</option>
+                        <option value="16">16</option>
+                    </select>
+                    <input type="submit" value="Organize Tournament" id="setupTournament">
+                </form>
+                <form class="players">
+                    <!-- populate with JavaScript -->
+                </form>
         </section>
         <section class="bracket">
             <div class="content matchups">

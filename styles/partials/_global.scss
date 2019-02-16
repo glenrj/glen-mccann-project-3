@@ -59,7 +59,15 @@ fieldset {
 }
 
 [type=text] {
-    color: $accent;
+    font-family: 'Raleway', sans-serif;
     padding: 2px;
     @include font-size(18);
+    background: none;
+    border: none;
+    border-bottom: 2px solid $primary;
+    margin-top: 5px;
+    &::placeholder {
+        color: $accent;
+        
+    }
 }

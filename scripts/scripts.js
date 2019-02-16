@@ -1,13 +1,16 @@
 // global variables
 const tournament = {
     name: '',
-    numOfPlayers: 8,
+    numOfPlayers: 0,
     round: 0,
     players: [],
     eliminated: []
 }
 
 tournament.setup = () => {
+    tournament.numOfPlayers = tournament.numOfPlayers + $('[name=numOfPlayers] option:selected').val();
+    console.log(tournament.numOfPlayers);
+
     if (tournament.numOfPlayers % 2 === 0) {
         // update tournament name
         tournament.name = $('#tournamentName').val();
@@ -15,18 +18,46 @@ tournament.setup = () => {
         if (tournament.name !== '') {
             $('h1').text(tournament.name);
         }
-
-        // add player names to array
-        tournament.players = [];
-
+        
+        $('.tournamentNameForm').remove();
+        // add player name fields
         for (i = 0; i < tournament.numOfPlayers; i++) {
-            tournament.players.push($(`#player${i + 1}`).val());
+            let playerNum = i + 1;
+            $('.players').append(`
+                 <div>
+                        <label for="player${playerNum}">Player ${playerNum}:</label>
+                        <input type="text" name="player${playerNum}" id="player${playerNum}" placeholder="Player Name">
+                    </div>
+            `);
         }
-        // remove setup section from page after setup is complete
-        $('.setup').remove();
+        $('.players').append(`<div><input type="submit" value="Add Players" id="addPlayers" class="addPlayers"></div>`);
+
+        tournament.addPlayersEventHandler();
+
     } else {
         $('form').append(`<p>Error: You must select an even number of players. If you have an odd number of players, you can add a placeholder and have them lose the first round.<p>`)
     }
+}
+
+tournament.addPlayers = () => {
+    // add player names to array
+
+    tournament.players = [];
+
+    for (i = 0; i < tournament.numOfPlayers; i++) {
+        tournament.players.push($(`#player${i + 1}`).val());
+    }
+    // remove setup section from page after setup is complete
+    $('.setup').remove();
+
+    tournament.newRound();
+}
+
+tournament.addPlayersEventHandler = () => {
+    $('.addPlayers').on('submit', function(e) {
+        e.preventDefault();
+        tournament.addPlayers();
+    })
 }
 
 tournament.newRound = () => {
@@ -109,9 +140,8 @@ tournament.roundWinner = () => {
 // document ready
 $(function () {
 
-    $('form').on('submit', function (e) {
+    $('.tournamentNameForm').on('submit', function (e) {
         e.preventDefault();
         tournament.setup();
-        tournament.newRound();
     });
 });

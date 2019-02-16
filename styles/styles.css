@@ -197,10 +197,22 @@ fieldset {
   padding-left: 0; }
 
 [type=text] {
-  color: #96acb7;
+  font-family: 'Raleway', sans-serif;
   padding: 2px;
   font-size: 18px;
-  font-size: 0.9rem; }
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #40376e;
+  margin-top: 5px; }
+  [type=text]::-webkit-input-placeholder {
+    color: #96acb7; }
+  [type=text]:-ms-input-placeholder {
+    color: #96acb7; }
+  [type=text]::-ms-input-placeholder {
+    color: #96acb7; }
+  [type=text]::placeholder {
+    color: #96acb7; }
 
 header {
   background: url(../assets/rock-paper-scissors.jpg);
@@ -243,17 +255,6 @@ h1 {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column; }
-
-.tournamentNameFieldset {
-  text-align: center; }
-  .tournamentNameFieldset label {
-    font-size: 25px;
-    font-size: 1.25rem; }
-  .tournamentNameFieldset [type=text] {
-    padding: 2px;
-    font-size: 20px;
-    font-size: 1rem;
-    width: 270px; }
 
 .tournamentName {
   min-width: 250px; }
@@ -342,8 +343,8 @@ input#setupTournament {
   .results p {
     font-family: 'Lobster', sans-serif;
     text-align: center;
-    font-size: 40px;
-    font-size: 2rem; }
+    font-size: 25px;
+    font-size: 1.25rem; }
   .results span {
     color: #36558f;
     font-weight: 700; }
