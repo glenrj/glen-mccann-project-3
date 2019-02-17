@@ -1,0 +1,6 @@
+@media (max-width: 600px) {
+    .players {
+        grid-template-columns: 48% 48%;
+        grid-column-gap: 4%;
+    }
+} 
