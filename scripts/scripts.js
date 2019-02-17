@@ -96,6 +96,7 @@ tournament.addPlayersEventHandler = () => {
 }
 
 tournament.newRound = () => {
+    $(`button.winnerRound${tournament.round}`).remove();
     // add a new round to html
     tournament.round++
     $('.matchups').append(`<div><h2>Round ${tournament.round}</h2></div>
@@ -163,6 +164,7 @@ tournament.roundWinner = () => {
             // start a new round with the remaining players
             tournament.newRound();
         } else if (tournament.players.length == 2) {
+            $(`button.winnerRound${tournament.round}`).remove();
             let match = 1;
             let winner = $(`input[name=round${tournament.round}Match${match}]:checked`);
             let winnerName = winner[0].value;
