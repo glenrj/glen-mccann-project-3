@@ -3,6 +3,7 @@
 
 html {
     font-size: 125%;
+    line-height: 1.6;
     background: $background;
 }
 
@@ -45,12 +46,15 @@ h2 {
     padding-top: 5%;
     padding-bottom: 2%;
     color: $header;
-    // @include font-size();
+    @include font-size(35);
 }
 
-h3 {
-    color: $header;
-    line-height: 1.6;
+a {
+    text-decoration: none;
+}
+
+p {
+    font-family: 'Raleway', sans-serif;
 }
 
 fieldset {
@@ -59,7 +63,27 @@ fieldset {
 }
 
 [type=text] {
-    color: $accent;
+    font-family: 'Raleway', sans-serif;
     padding: 2px;
     @include font-size(18);
+    background: none;
+    border: none;
+    border-bottom: 2px solid $primary;
+    margin-top: 5px;
+    &::placeholder {
+        color: $accent;
+    }
+}
+
+select {
+    appearance: none;
+    background: $background;
+    border: none;
+    border-bottom: 2px solid $primary;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: $header;
+    width: 30px
 }

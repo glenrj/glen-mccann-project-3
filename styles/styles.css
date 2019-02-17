@@ -147,6 +147,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 html {
   font-size: 125%;
+  line-height: 1.6;
   background: #EFE3E2; }
 
 .wrapper {
@@ -186,21 +187,51 @@ h2 {
   padding: 0;
   padding-top: 5%;
   padding-bottom: 2%;
-  color: #36558f; }
-
-h3 {
   color: #36558f;
-  line-height: 1.6; }
+  font-size: 35px;
+  font-size: 1.75rem; }
+
+a {
+  text-decoration: none; }
+
+p {
+  font-family: 'Raleway', sans-serif; }
 
 fieldset {
   border: none;
   padding-left: 0; }
 
 [type=text] {
-  color: #96acb7;
+  font-family: 'Raleway', sans-serif;
   padding: 2px;
   font-size: 18px;
-  font-size: 0.9rem; }
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #40376e;
+  margin-top: 5px; }
+  [type=text]::-webkit-input-placeholder {
+    color: #96acb7; }
+  [type=text]:-ms-input-placeholder {
+    color: #96acb7; }
+  [type=text]::-ms-input-placeholder {
+    color: #96acb7; }
+  [type=text]::placeholder {
+    color: #96acb7; }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #EFE3E2;
+  border: none;
+  border-bottom: 2px solid #40376e;
+  text-align: center;
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  color: #36558f;
+  width: 30px; }
 
 header {
   background: url(../assets/rock-paper-scissors.jpg);
@@ -233,39 +264,36 @@ h1 {
   padding: 10px; }
   .setup h2 {
     padding: 0px;
-    padding-bottom: 5px; }
+    padding-bottom: 10px; }
+  .setup label, .setup input, .setup select {
+    margin-bottom: 20px; }
 
-.nameForm {
+.tournamentNameForm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column; }
-
-.tournamentNameFieldset {
-  text-align: center; }
-  .tournamentNameFieldset label {
-    font-size: 25px;
-    font-size: 1.25rem; }
-  .tournamentNameFieldset [type=text] {
-    padding: 2px;
-    font-size: 20px;
-    font-size: 1rem;
-    width: 270px; }
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .tournamentNameForm div.field {
+    margin-right: 5%; }
+  .tournamentNameForm input#setupTournament {
+    margin: 0; }
 
 .tournamentName {
   min-width: 250px; }
 
-fieldset.players {
+.players {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 33% 33% 33%;
-  grid-template-columns: 33% 33% 33%;
+  -ms-grid-columns: 30% 30% 30%;
+  grid-template-columns: 30% 30% 30%;
+  grid-column-gap: 3%;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
-  fieldset.players div {
+  .players div {
     margin: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -274,6 +302,10 @@ fieldset.players {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column; }
+
+.playersForm button {
+  display: block;
+  margin: 10px auto; }
 
 input#setupTournament {
   margin: 0 auto; }
@@ -314,9 +346,21 @@ input#setupTournament {
   justify-content: space-between;
   margin-bottom: 10px; }
   .pair .option {
-    width: 45%; }
+    width: 45%;
+    text-align: center; }
     .pair .option label {
-      margin-right: 2%; }
+      margin-right: 2%;
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      transition: 0.3s; }
+      .pair .option label:hover {
+        color: #36558f;
+        border-bottom: 2px solid #40376e;
+        font-weight: bold; }
+    .pair .option input:checked + label {
+      color: #36558f;
+      border-bottom: 2px solid #40376e;
+      font-weight: bold; }
 
 .matchups {
   display: -webkit-box;
@@ -347,3 +391,15 @@ input#setupTournament {
   .results span {
     color: #36558f;
     font-weight: 700; }
+  .results button {
+    margin: 0 auto;
+    display: block; }
+
+input[type=radio] {
+  display: none; }
+
+@media (max-width: 600px) {
+  .players {
+    -ms-grid-columns: 48% 48%;
+    grid-template-columns: 48% 48%;
+    grid-column-gap: 4%; } }
