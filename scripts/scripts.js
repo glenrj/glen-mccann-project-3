@@ -53,8 +53,8 @@ tournament.addPlayers = () => {
         tournament.players.splice(3, 0, "COM 2");
         tournament.players.splice(5, 0, "COM 3")
     } else if (tournament.numOfPlayers == '06' || tournament.numOfPlayers == '014') {
-        tournament.players.push('COM 1');
-        tournament.players.push('COM 2');
+        tournament.players.splice(1, 0, "COM 1");
+        tournament.players.splice(3, 0, "COM 2");
     } else if (tournament.numOfPlayers == '07' || tournament.numOfPlayers == '015') {
         tournament.players.push('COM');
     } else if (tournament.numOfPlayers == '09') {
