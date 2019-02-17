@@ -9,8 +9,9 @@ const tournament = {
 
 tournament.setup = () => {
     tournament.numOfPlayers = tournament.numOfPlayers + $('[name=numOfPlayers] option:selected').val();
+    
 
-    if (tournament.numOfPlayers % 2 === 0) {
+
         // update tournament name
         tournament.name = $('#tournamentName').val();
         // update page header w/ tournament name
@@ -32,24 +33,57 @@ tournament.setup = () => {
             `);
         }
 
-        $('.players').append(`<div><button type="submit" value="Add Players" id="addPlayers" class="addPlayers">Add Players</button></div>`);
+        $('.playersForm').append(`<button type="submit" value="Add Players" id="addPlayers" class="addPlayers">Let the games begin</button>`);
 
         tournament.addPlayersEventHandler();
-
-    } else {
-        $('form').append(`<p>Error: You must select an even number of players. If you have an odd number of players, you can add a placeholder and have them lose the first round.<p>`)
-    }
 }
 
 tournament.addPlayers = () => {
     // add player names to array
-    tournament.players = [];
+    // tournament.players = [];
 
     for (i = 0; i < tournament.numOfPlayers; i++) {
         tournament.players.push($(`#player${i + 1}`).val());
     }
     // remove setup section from page after setup is complete
     $('.setup').remove();
+
+    if (tournament.numOfPlayers == '05' || tournament.numOfPlayers == '013') {
+        tournament.players.splice(1, 0, "COM 1");
+        tournament.players.splice(3, 0, "COM 2");
+        tournament.players.splice(5, 0, "COM 3")
+    } else if (tournament.numOfPlayers == '06' || tournament.numOfPlayers == '014') {
+        tournament.players.push('COM 1');
+        tournament.players.push('COM 2');
+    } else if (tournament.numOfPlayers == '07' || tournament.numOfPlayers == '015') {
+        tournament.players.push('COM');
+    } else if (tournament.numOfPlayers == '09') {
+        tournament.players.splice(1, 0, "COM 1");
+        tournament.players.splice(3, 0, "COM 2");
+        tournament.players.splice(5, 0, "COM 3");
+        tournament.players.splice(7, 0, "COM 4");
+        tournament.players.splice(9, 0, "COM 5");
+        tournament.players.splice(11, 0, "COM 6");
+        tournament.players.splice(13, 0, "COM 7");
+    } else if (tournament.numOfPlayers == '010') {
+        tournament.players.splice(1, 0, "COM 1");
+        tournament.players.splice(3, 0, "COM 2");
+        tournament.players.splice(5, 0, "COM 3");
+        tournament.players.splice(7, 0, "COM 4");
+        tournament.players.splice(9, 0, "COM 5");
+        tournament.players.splice(11, 0, "COM 6");
+    } else if (tournament.numOfPlayers == '011') {
+        tournament.players.splice(1, 0, "COM 1");
+        tournament.players.splice(3, 0, "COM 2");
+        tournament.players.splice(5, 0, "COM 3");
+        tournament.players.splice(7, 0, "COM 4");
+        tournament.players.splice(9, 0, "COM 5");
+    } else if (tournament.numOfPlayers == '012') {
+        tournament.players.splice(1, 0, "COM 1");
+        tournament.players.splice(3, 0, "COM 2");
+        tournament.players.splice(5, 0, "COM 3");
+        tournament.players.splice(7, 0, "COM 4");
+    }
 
     tournament.newRound();
 }
@@ -72,7 +106,9 @@ tournament.newRound = () => {
 
     for (let i = 0; i < tournament.players.length; i += 2) {
         match = match + 1
-
+        // if (tournament.players[i + 1] == undefined) {
+        //     tournament.players.push('Free Win!');
+        // }
         $(`.round${tournament.round}`).append(`
             <div class="round${tournament.round}Match${match} match">
                 <div class="pair">

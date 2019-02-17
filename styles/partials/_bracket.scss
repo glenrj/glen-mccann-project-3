@@ -9,40 +9,44 @@
     padding: 10px;
     h2 {
         padding: 0px;
-        padding-bottom: 5px;
+        padding-bottom: 10px;
     }
    }
 
-   .nameForm {
-       display: flex;
-       flex-direction: column;
+   .tournamentNameForm {
+        display: flex;
+        // justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        div.field {
+            margin-right: 5%;
+        }
+        input#setupTournament {
+            margin: 0;
+        }
    }
-
-//    .tournamentNameFieldset {
-//     text-align: center;
-//     label {
-//         @include font-size(25);
-//     }
-//     [type=text] {
-//     padding: 2px;
-//     @include font-size(20);
-//     width: 270px;
-// }
-//    }
 
    .tournamentName {
        min-width: 250px;
    }
 
-   fieldset.players {
+    .players {
        display: grid;
-       grid-template-columns: 33% 33% 33%;
+       grid-template-columns: 30% 30% 30%;
+       grid-column-gap: 3%;
        flex-wrap: wrap;
        div {
            margin: 5px;
            display: flex;
            flex-direction: column;
        }
+   }
+
+   .playersForm {
+       button{
+           display: block;
+           margin: 10px auto;
+       } 
    }
 
    input#setupTournament {

@@ -3,6 +3,7 @@
 
 html {
     font-size: 125%;
+    line-height: 1.6;
     background: $background;
 }
 
@@ -45,12 +46,16 @@ h2 {
     padding-top: 5%;
     padding-bottom: 2%;
     color: $header;
-    // @include font-size();
+    @include font-size(35);
 }
 
 h3 {
     color: $header;
     line-height: 1.6;
+}
+
+p {
+    font-family: 'Raleway', sans-serif;
 }
 
 fieldset {
@@ -68,7 +73,6 @@ fieldset {
     margin-top: 5px;
     &::placeholder {
         color: $accent;
-        
     }
 }
 
@@ -82,4 +86,5 @@ select {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     color: $header;
+    width: 30px
 }

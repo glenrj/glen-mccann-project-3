@@ -147,6 +147,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 html {
   font-size: 125%;
+  line-height: 1.6;
   background: #EFE3E2; }
 
 .wrapper {
@@ -186,11 +187,16 @@ h2 {
   padding: 0;
   padding-top: 5%;
   padding-bottom: 2%;
-  color: #36558f; }
+  color: #36558f;
+  font-size: 35px;
+  font-size: 1.75rem; }
 
 h3 {
   color: #36558f;
   line-height: 1.6; }
+
+p {
+  font-family: 'Raleway', sans-serif; }
 
 fieldset {
   border: none;
@@ -225,7 +231,8 @@ select {
   display: inline-block;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
-  color: #36558f; }
+  color: #36558f;
+  width: 30px; }
 
 header {
   background: url(../assets/rock-paper-scissors.jpg);
@@ -258,28 +265,34 @@ h1 {
   padding: 10px; }
   .setup h2 {
     padding: 0px;
-    padding-bottom: 5px; }
+    padding-bottom: 10px; }
 
-.nameForm {
+.tournamentNameForm {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column; }
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .tournamentNameForm div.field {
+    margin-right: 5%; }
+  .tournamentNameForm input#setupTournament {
+    margin: 0; }
 
 .tournamentName {
   min-width: 250px; }
 
-fieldset.players {
+.players {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 33% 33% 33%;
-  grid-template-columns: 33% 33% 33%;
+  -ms-grid-columns: 30% 30% 30%;
+  grid-template-columns: 30% 30% 30%;
+  grid-column-gap: 3%;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
-  fieldset.players div {
+  .players div {
     margin: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -288,6 +301,10 @@ fieldset.players {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column; }
+
+.playersForm button {
+  display: block;
+  margin: 10px auto; }
 
 input#setupTournament {
   margin: 0 auto; }
