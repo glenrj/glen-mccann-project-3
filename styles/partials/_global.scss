@@ -49,9 +49,8 @@ h2 {
     @include font-size(35);
 }
 
-h3 {
-    color: $header;
-    line-height: 1.6;
+a {
+    text-decoration: none;
 }
 
 p {

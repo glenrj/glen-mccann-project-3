@@ -98,7 +98,7 @@ tournament.addPlayersEventHandler = () => {
 tournament.newRound = () => {
     // add a new round to html
     tournament.round++
-    $('.matchups').append(`<div><h3>Round ${tournament.round}</h3></div>
+    $('.matchups').append(`<div><h2>Round ${tournament.round}</h2></div>
     <div class="round${tournament.round} round"></div>`);
     // console.log('added round');
 
@@ -113,14 +113,14 @@ tournament.newRound = () => {
             <div class="round${tournament.round}Match${match} match">
                 <div class="pair">
                     <div class="option">
-                        <label for="${tournament.players[i]}">${tournament.players[i]}</label>
-                        <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.players[i]}"
+                        <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.round}${tournament.players[i]}"
                         value="${tournament.players[i]}">
+                        <label for="${tournament.round}${tournament.players[i]}">${tournament.players[i]}</label>
                     </div>
-                    <div>
-                        <label for="${tournament.players[i + 1]}">${tournament.players[i + 1]}</label>
-                        <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.players[i + 1]}"
+                    <div class="option">
+                        <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.round}${tournament.players[i + 1]}"
                         value="${tournament.players[i + 1]}">
+                        <label for="${tournament.round}${tournament.players[i + 1]}">${tournament.players[i + 1]}</label>
                     </div>
                 </div>
             </div>
@@ -183,13 +183,11 @@ const newTournamentEventHandler = () => {
     $('.newTournament').on('click', function(e) {
         e.preventDefault();
         location.reload(); 
-
     });
 }
 
 // document ready
 $(function () {
-
     $('.tournamentNameForm').on('submit', function (e) {
         e.preventDefault();
         tournament.setup();

@@ -191,9 +191,8 @@ h2 {
   font-size: 35px;
   font-size: 1.75rem; }
 
-h3 {
-  color: #36558f;
-  line-height: 1.6; }
+a {
+  text-decoration: none; }
 
 p {
   font-family: 'Raleway', sans-serif; }
@@ -266,6 +265,8 @@ h1 {
   .setup h2 {
     padding: 0px;
     padding-bottom: 10px; }
+  .setup label, .setup input, .setup select {
+    margin-bottom: 20px; }
 
 .tournamentNameForm {
   display: -webkit-box;
@@ -345,9 +346,21 @@ input#setupTournament {
   justify-content: space-between;
   margin-bottom: 10px; }
   .pair .option {
-    width: 45%; }
+    width: 45%;
+    text-align: center; }
     .pair .option label {
-      margin-right: 2%; }
+      margin-right: 2%;
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      transition: 0.3s; }
+      .pair .option label:hover {
+        color: #36558f;
+        border-bottom: 2px solid #40376e;
+        font-weight: bold; }
+    .pair .option input:checked + label {
+      color: #36558f;
+      border-bottom: 2px solid #40376e;
+      font-weight: bold; }
 
 .matchups {
   display: -webkit-box;
@@ -373,8 +386,20 @@ input#setupTournament {
   .results p {
     font-family: 'Lobster', sans-serif;
     text-align: center;
-    font-size: 25px;
-    font-size: 1.25rem; }
+    font-size: 40px;
+    font-size: 2rem; }
   .results span {
     color: #36558f;
     font-weight: 700; }
+  .results button {
+    margin: 0 auto;
+    display: block; }
+
+input[type=radio] {
+  display: none; }
+
+@media (max-width: 600px) {
+  .players {
+    -ms-grid-columns: 48% 48%;
+    grid-template-columns: 48% 48%;
+    grid-column-gap: 4%; } }
