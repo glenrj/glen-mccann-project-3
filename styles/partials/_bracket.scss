@@ -2,11 +2,11 @@
 .setup {
     background: $background;
     margin: 0 auto;
+    padding: 10px;
     width: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px;
     h2 {
         padding: 0px;
         padding-bottom: 10px;
@@ -14,67 +14,63 @@
     label, input, select {
         margin-bottom: 20px;
     }
-   }
+}
 
-   .tournamentNameForm {
+.tournament-name-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    div.field {
+        margin-right: 5%;
+    }
+    input#setup-tournament {
+        margin: 0;
+    }
+}
+
+.tournament-name {
+    min-width: 250px;
+}
+
+.players {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-column-gap: 3%;
+    flex-wrap: wrap;
+    div {
+        margin: 5px;
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        div.field {
-            margin-right: 5%;
-        }
-        input#setupTournament {
-            margin: 0;
-        }
-   }
+        flex-direction: column;
+    }
+}
 
-   .tournamentName {
-       min-width: 250px;
-   }
+.players-form {
+    button {
+        display: block;
+        margin: 10px auto;
+    } 
+}
 
-    .players {
-       display: grid;
-       grid-template-columns: 30% 30% 30%;
-       grid-column-gap: 3%;
-       flex-wrap: wrap;
-       div {
-           margin: 5px;
-           display: flex;
-           flex-direction: column;
-       }
-   }
+input#setup-tournament {
+    margin: 0 auto;
+}
 
-   .playersForm {
-       button{
-           display: block;
-           margin: 10px auto;
-       } 
-   }
-
-   input#setupTournament {
-       margin: 0 auto;
-   }
-
-.bracket {
-    // background: blue;
-    // display: flex;
-    .round {
-        // border: 1px solid black;
-        width: 100%;
+// tournament bracket styles
+.round {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-bottom: 15px;
+    .match {
         display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        padding-bottom: 15px;
-        .match {
-            border: 3px solid $dark-accent;
-            border-radius: 5px;
-            min-width: 100px;
-            flex-basis: 300px;
-            padding: 2%;
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-        }
+        flex-direction: column;
+        flex-basis: 300px;
+        min-width: 100px;
+        margin-bottom: 10px;
+        padding: 2%;
+        border: 3px solid $dark-accent;
+        border-radius: 5px;
     }
 }
 
@@ -82,39 +78,44 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    .option {
-        width: 45%;
-        text-align: center;
-        label {
-            margin-right: 2%;
-            transition: 0.3s;
-            &:hover,
-            &:focus {
-                color: $header;
-                border-bottom: 2px solid $primary;
-                font-weight: bold;
-            }
-            }
-            input:checked+label {
-                color: $header;
-                border-bottom: 2px solid $primary;
-                font-weight: bold;
-            }
+} 
+
+.option {
+    width: 45%;
+    text-align: center;
+    label {
+        margin-right: 2%;
+        transition: 0.2s;
+        &:hover,
+        &:focus {
+            color: $header;
+            font-weight: bold;
+            border-bottom: 2px solid $primary;
         }
-    } 
+        }
+        input:checked+label {
+            color: $header;
+            font-weight: bold;
+            border-bottom: 2px solid $primary;
+        }
+}
 
 .matchups {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    // border: 1px solid green;
     button {
         margin-bottom: 40px;
     }
 }
 
+input[type=radio] {
+    display: none;
+}
+
+// stlyes for win state
 .results {
     padding: 25px 0px;;
     p {
@@ -130,9 +131,4 @@
         margin: 0 auto;
         display: block;
     }
-}
-
-
-input[type=radio] {
-    display: none;
 }

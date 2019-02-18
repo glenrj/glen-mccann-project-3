@@ -132,19 +132,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.visually-hidden:not(:focus):not(:active) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  -webkit-clip-path: inset(100%);
-  clip-path: inset(100%);
-  clip: rect(0 0 0);
-  overflow: hidden; }
-
 html {
   font-size: 125%;
   line-height: 1.6;
@@ -156,20 +143,20 @@ html {
 
 button,
 [type=submit] {
-  padding: 1%;
-  text-transform: uppercase;
-  min-width: 250px;
   font-size: 20px;
   font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  padding: 1%;
+  margin: 10px auto;
+  min-width: 250px;
   background: #40376e;
   color: #EFE3E2;
   border: 1px solid #40376e;
+  border-radius: 5px;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
-  transition: 0.2s;
-  border-radius: 5px;
-  margin: 10px auto;
-  font-family: 'Raleway', sans-serif; }
+  transition: 0.2s; }
   button:hover,
   [type=submit]:hover {
     color: #40376e;
@@ -204,13 +191,13 @@ fieldset {
 
 [type=text] {
   font-family: 'Raleway', sans-serif;
-  padding: 2px;
   font-size: 18px;
   font-size: 0.9rem;
+  padding: 2px;
+  margin-top: 5px;
   background: none;
   border: none;
-  border-bottom: 2px solid #40376e;
-  margin-top: 5px; }
+  border-bottom: 2px solid #40376e; }
   [type=text]::-webkit-input-placeholder {
     color: #36558f; }
   [type=text]:-ms-input-placeholder {
@@ -221,18 +208,18 @@ fieldset {
     color: #36558f; }
 
 select {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  display: inline-block;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  min-width: 40px;
   background: #EFE3E2;
-  border: none;
-  border-bottom: 2px solid #40376e;
-  text-align: center;
-  display: inline-block;
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
   color: #36558f;
-  width: 30px; }
+  border: none;
+  border-bottom: 2px solid #40376e; }
 
 header {
   background: url(../assets/rock-paper-scissors.jpg);
@@ -251,6 +238,7 @@ h1 {
 .setup {
   background: #EFE3E2;
   margin: 0 auto;
+  padding: 10px;
   width: 95%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -261,15 +249,14 @@ h1 {
   flex-direction: column;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
-  padding: 10px; }
+  justify-content: center; }
   .setup h2 {
     padding: 0px;
     padding-bottom: 10px; }
   .setup label, .setup input, .setup select {
     margin-bottom: 20px; }
 
-.tournamentNameForm {
+.tournament-name-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -278,12 +265,12 @@ h1 {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
-  .tournamentNameForm div.field {
+  .tournament-name-form div.field {
     margin-right: 5%; }
-  .tournamentNameForm input#setupTournament {
+  .tournament-name-form input#setup-tournament {
     margin: 0; }
 
-.tournamentName {
+.tournament-name {
   min-width: 250px; }
 
 .players {
@@ -304,31 +291,25 @@ h1 {
     -ms-flex-direction: column;
     flex-direction: column; }
 
-.playersForm button {
+.players-form button {
   display: block;
   margin: 10px auto; }
 
-input#setupTournament {
+input#setup-tournament {
   margin: 0 auto; }
 
-.bracket .round {
-  width: 100%;
+.round {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  width: 100%;
   padding-bottom: 15px; }
-  .bracket .round .match {
-    border: 3px solid #48233c;
-    border-radius: 5px;
-    min-width: 100px;
-    -ms-flex-preferred-size: 300px;
-    flex-basis: 300px;
-    padding: 2%;
+  .round .match {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -336,7 +317,13 @@ input#setupTournament {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    margin-bottom: 10px; }
+    -ms-flex-preferred-size: 300px;
+    flex-basis: 300px;
+    min-width: 100px;
+    margin-bottom: 10px;
+    padding: 2%;
+    border: 3px solid #48233c;
+    border-radius: 5px; }
 
 .pair {
   display: -webkit-box;
@@ -346,41 +333,45 @@ input#setupTournament {
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 10px; }
-  .pair .option {
-    width: 45%;
-    text-align: center; }
-    .pair .option label {
-      margin-right: 2%;
-      -webkit-transition: 0.3s;
-      -o-transition: 0.3s;
-      transition: 0.3s; }
-      .pair .option label:hover, .pair .option label:focus {
-        color: #36558f;
-        border-bottom: 2px solid #40376e;
-        font-weight: bold; }
-    .pair .option input:checked + label {
+
+.option {
+  width: 45%;
+  text-align: center; }
+  .option label {
+    margin-right: 2%;
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s; }
+    .option label:hover, .option label:focus {
       color: #36558f;
-      border-bottom: 2px solid #40376e;
-      font-weight: bold; }
+      font-weight: bold;
+      border-bottom: 2px solid #40376e; }
+  .option input:checked + label {
+    color: #36558f;
+    font-weight: bold;
+    border-bottom: 2px solid #40376e; }
 
 .matchups {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
   .matchups button {
     margin-bottom: 40px; }
+
+input[type=radio] {
+  display: none; }
 
 .results {
   padding: 25px 0px; }
@@ -395,9 +386,6 @@ input#setupTournament {
   .results button {
     margin: 0 auto;
     display: block; }
-
-input[type=radio] {
-  display: none; }
 
 @media (max-width: 600px) {
   .players {

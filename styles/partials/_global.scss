@@ -1,6 +1,4 @@
-// visually hidden
-.visually-hidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
-
+// general syles
 html {
     font-size: 125%;
     line-height: 1.6;
@@ -12,25 +10,27 @@ html {
     margin: 0 auto;
 }
 
+// button styles
 button,
 [type=submit] {
-    padding: 1%;
-    text-transform: uppercase;
-    min-width: 250px;
     @include font-size(20);
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    padding: 1%;
+    margin: 10px auto;
+    min-width: 250px;
     background: $primary;
     color: $background;
     border: 1px solid $primary;
-    transition: 0.2s;
     border-radius: 5px;
-    margin: 10px auto;
-    font-family: 'Raleway', sans-serif;
+    transition: 0.2s;
     &:hover {
         color: $primary;
         background: $background;
     }
 }
 
+// general text styles
 h1,
 h2,
 h3 {
@@ -58,6 +58,7 @@ p {
     font-family: 'Raleway', sans-serif;
 }
 
+// form styles
 fieldset {
     border: none;
     padding-left: 0;
@@ -65,26 +66,26 @@ fieldset {
 
 [type=text] {
     font-family: 'Raleway', sans-serif;
-    padding: 2px;
     @include font-size(18);
+    padding: 2px;
+    margin-top: 5px;
     background: none;
     border: none;
     border-bottom: 2px solid $primary;
-    margin-top: 5px;
     &::placeholder {
         color: $accent;
     }
 }
 
 select {
-    appearance: none;
-    background: $background;
-    border: none;
-    border-bottom: 2px solid $primary;
     text-align: center;
-    display: inline-block;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
+    display: inline-block;
+    appearance: none;
+    min-width: 40px;
+    background: $background;
     color: $header;
-    width: 30px
+    border: none;
+    border-bottom: 2px solid $primary;
 }

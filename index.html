@@ -5,24 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tournament</title>
+    <link rel='icon' href='../assets/favicon.png'>
     <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway:400,600" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+    <!-- HEADER -->
     <header class="wrapper">
+        <!-- title -->
         <a href="index.html"><h1>Tournament</h1></a>
     </header>
+    <!-- MAIN -->
     <main class="wrapper">
+        <!-- questions to set up tournament -->
         <section class="setup">
+            <!-- title -->
             <h2>Tournament Setup</h2>
-            <form action="" class="tournamentNameForm">
+            <!-- Form to get Tournament Name and # of players -->
+            <form action="" class="tournament-name-form">
+                <!-- Tournament Name -->
                 <div class="field">
-                    <label for="tournamentName">Tournament Name:</label>
-                    <input type="text" id="tournamentName" placeholder="Amazing Tournament 2019" class="tournamentName">
+                    <label for="tournament-name">Tournament Name:</label>
+                    <input type="text" id="tournament-name" placeholder="Amazing Tournament 2019" class="tournament-name">
                 </div>
+                <!-- Number of Players -->
                 <div class="field">
-                    <label for="numOfPlayers">Number of Players:</label>
-                    <select name="numOfPlayers">
+                    <label for="num-of-players">Number of Players:</label>
+                    <select name="num-of-players">
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
@@ -38,24 +47,33 @@
                         <option value="16">16</option>
                     </select>
                 </div>
-                <input type="submit" value="Organize Tournament" id="setupTournament">
+                <!-- Submit Button -->
+                <input type="submit" value="Organize Tournament" id="setup-tournament">
             </form>
-            <div><p>Depending on the amount of players chosen, some computer (COM) characters may be added to even out the roster. Count these as a free win and advance to the next round!</p></div>
-            <form class="playersForm">
+            <!-- User Instructions -->
+            <div>
+                <p>Depending on the amount of players chosen, some computer (COM) characters may be added to even out the roster. Count these as a free win and advance to the next round!</p>
+            </div>
+            <!-- Form to enter player names (empty upon page load) -->
+            <form class="players-form">
                 <div class="players">
                     <!-- populate with JavaScript -->
                 </div>
             </form>
         </section>
+        <!-- Tournament Bracket Section -->
         <section class="bracket">
+            <!-- Div for matchups -->
             <div class="content matchups">
                 <!-- populate with JavaScript -->
             </div>
+            <!-- Div for winning message -->
             <div class="results">
                 <!-- populate with JavaScript -->
             </div>
         </section>
     </main>
+    <!-- JavaScript -->
     <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
     <script src="scripts/scripts.js"></script>
 </body>
