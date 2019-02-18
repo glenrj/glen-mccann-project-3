@@ -40,10 +40,14 @@ tournament.setup = () => {
 
 tournament.addPlayers = () => {
     // add player names to array
-    // tournament.players = [];
 
     for (i = 0; i < tournament.numOfPlayers; i++) {
-        tournament.players.push($(`#player${i + 1}`).val());
+        let playerName = $(`#player${i + 1}`).val();
+        if (playerName !== '') {
+            tournament.players.push(playerName);
+        } else {
+            tournament.players.push(`Player ${i + 1}`);
+        }
     }
     // remove setup section from page after setup is complete
     $('.setup').remove();
