@@ -112,7 +112,8 @@ input#setup-tournament {
 }
 
 input[type=radio] {
-    display: none;
+    opacity: 0;
+    position: absolute;
 }
 
 // stlyes for win state

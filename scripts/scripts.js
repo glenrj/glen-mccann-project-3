@@ -24,15 +24,15 @@ tournament.setup = () => {
     for (i = 0; i < tournament.numOfPlayers; i++) {
         let playerNum = i + 1;
         $('.players').append(`
-                <div>
-                <label for="player${playerNum}">Player ${playerNum}:</label>
-                <input type="text" name="player${playerNum}" id="player${playerNum}" placeholder="Player Name">
+            <div>
+                <label for="player-${playerNum}">Player ${playerNum}:</label>
+                <input type="text" name="player-${playerNum}" id="player-${playerNum}" placeholder="Player Name">
             </div>
         `);
     }
 
     // add submit button and event handler
-    $('.players-form').append(`<button type="submit" value="Add Players" id="addPlayers" class="addPlayers">Let the games begin</button>`);
+    $('.players-form').append(`<button type="submit" value="Add Players" id="add-players" class="add-players">Let the games begin</button>`);
 
     tournament.addPlayersEventHandler();
 }
@@ -40,7 +40,7 @@ tournament.setup = () => {
 tournament.addPlayers = () => {
     // add player names to array
     for (i = 0; i < tournament.numOfPlayers; i++) {
-        let playerName = $(`#player${i + 1}`).val();
+        let playerName = $(`#player-${i + 1}`).val();
         if (playerName !== '') {
             tournament.players.push(playerName);
         } else {
@@ -94,7 +94,7 @@ tournament.addPlayers = () => {
 
 tournament.addPlayersEventHandler = () => {
     // event handler for button created in tournament.setup method
-    $('.addPlayers').on('click', function(e) {
+    $('.add-players').on('click', function(e) {
         e.preventDefault();
         tournament.addPlayers();
     })
@@ -102,7 +102,7 @@ tournament.addPlayersEventHandler = () => {
 
 tournament.newRound = () => {
     // get rid of button so round is not submitted twice
-    $(`button.winnerRound${tournament.round}`).remove();
+    $(`button.winner-round${tournament.round}`).remove();
 
     // add a new round to html
     tournament.round++
@@ -117,15 +117,15 @@ tournament.newRound = () => {
         match = match + 1
 
         $(`.round${tournament.round}`).append(`
-            <div class="round${tournament.round}Match${match} match">
+            <div class="round${tournament.round}-match${match} match">
                 <div class="pair">
                     <div class="option">
-                        <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.round}${tournament.players[i]}"
+                        <input type="radio" name="round${tournament.round}-match${match}" id="${tournament.round}${tournament.players[i]}"
                         value="${tournament.players[i]}">
                         <label for="${tournament.round}${tournament.players[i]}">${tournament.players[i]}</label>
                     </div>
                     <div class="option">
-                        <input type="radio" name="round${tournament.round}Match${match}" id="${tournament.round}${tournament.players[i + 1]}"
+                        <input type="radio" name="round${tournament.round}-match${match}" id="${tournament.round}${tournament.players[i + 1]}"
                         value="${tournament.players[i + 1]}">
                         <label for="${tournament.round}${tournament.players[i + 1]}">${tournament.players[i + 1]}</label>
                     </div>
@@ -135,13 +135,13 @@ tournament.newRound = () => {
     }
 
     // add button and event handler to submit winners
-    $('.matchups').append(`<button class="winnerRound${tournament.round}">Confirm Winners</button>`);
+    $('.matchups').append(`<button class="winner-round${tournament.round}">Confirm Winners</button>`);
 
     tournament.roundWinner();
 }
 
 tournament.roundWinner = () => {
-    $(`.winnerRound${tournament.round}`).on('click', function(e) {
+    $(`.winner-round${tournament.round}`).on('click', function(e) {
         e.preventDefault();
 
         // check if this round results in a winner or consecutive round
@@ -153,7 +153,7 @@ tournament.roundWinner = () => {
             for (let i = 0; i < tournament.players.length; i += 2) {
                 match = match + 1;
                 // get the value of the loser and return their name from the object
-                let elim = $(`input[name=round${tournament.round}Match${match}]:not(:checked)`);
+                let elim = $(`input[name=round${tournament.round}-match${match}]:not(:checked)`);
                 let elimValue = elim[0].value;
                 // add loser to temporary eliminatedArray
                 eliminatedArray.push(elimValue);
@@ -169,17 +169,17 @@ tournament.roundWinner = () => {
             tournament.newRound();
         } else if (tournament.players.length == 2) {
             // get rid of confirm button so winner isn't submitted multiples times
-            $(`button.winnerRound${tournament.round}`).remove();
+            $(`button.winner-round${tournament.round}`).remove();
 
             // evaluate winner
             let match = 1;
-            let winner = $(`input[name=round${tournament.round}Match${match}]:checked`);
+            let winner = $(`input[name=round${tournament.round}-match${match}]:checked`);
             let winnerName = winner[0].value;
 
             // add congratluations message and button for new game + event handler
             $('.results').append(`
                 <p><span>${winnerName}</span> is the winner! Congratulations!</p>
-                <div><button type="submit" class="newTournament">New Tournament</button></div>
+                <div><button type="submit" class="new-tournament">New Tournament</button></div>
                 `);
 
             newTournamentEventHandler();
@@ -191,7 +191,7 @@ tournament.roundWinner = () => {
 }
 
 const newTournamentEventHandler = () => {
-    $('.newTournament').on('click', function(e) {
+    $('.new-tournament').on('click', function(e) {
         e.preventDefault();
         location.reload(); 
     });
