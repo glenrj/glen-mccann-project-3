@@ -151,7 +151,8 @@ html {
   background: #EFE3E2; }
 
 .wrapper {
-  max-width: 1600px; }
+  max-width: 1600px;
+  margin: 0 auto; }
 
 button,
 [type=submit] {
@@ -211,13 +212,13 @@ fieldset {
   border-bottom: 2px solid #40376e;
   margin-top: 5px; }
   [type=text]::-webkit-input-placeholder {
-    color: #96acb7; }
+    color: #36558f; }
   [type=text]:-ms-input-placeholder {
-    color: #96acb7; }
+    color: #36558f; }
   [type=text]::-ms-input-placeholder {
-    color: #96acb7; }
+    color: #36558f; }
   [type=text]::placeholder {
-    color: #96acb7; }
+    color: #36558f; }
 
 select {
   -webkit-appearance: none;
@@ -237,7 +238,7 @@ header {
   background: url(../assets/rock-paper-scissors.jpg);
   background-size: cover;
   background-position: center;
-  height: 50vh; }
+  height: 60vh; }
 
 h1 {
   color: #40376e;
@@ -353,7 +354,7 @@ input#setupTournament {
       -webkit-transition: 0.3s;
       -o-transition: 0.3s;
       transition: 0.3s; }
-      .pair .option label:hover {
+      .pair .option label:hover, .pair .option label:focus {
         color: #36558f;
         border-bottom: 2px solid #40376e;
         font-weight: bold; }
