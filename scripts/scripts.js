@@ -16,7 +16,7 @@ tournament.setup = () => {
     if (tournament.name !== '') {
         $('h1').text(tournament.name);
     }
-    
+
     // remove name and number of players fields to avoid adding too many players
     $('.tournament-name-form').remove();
 
@@ -94,7 +94,7 @@ tournament.addPlayers = () => {
 
 tournament.addPlayersEventHandler = () => {
     // event handler for button created in tournament.setup method
-    $('.add-players').on('click', function(e) {
+    $('.add-players').on('click', function (e) {
         e.preventDefault();
         tournament.addPlayers();
     })
@@ -137,63 +137,84 @@ tournament.newRound = () => {
     // add button and event handler to submit winners
     $('.matchups').append(`<button class="winner-round${tournament.round}">Confirm Winners</button>`);
 
+    // tournament.radioListener();
     tournament.roundWinner();
 }
 
 tournament.roundWinner = () => {
-    $(`.winner-round${tournament.round}`).on('click', function(e) {
+    $(`.winner-round${tournament.round}`).on('click', function (e) {
         e.preventDefault();
 
-        // check if this round results in a winner or consecutive round
-        if (tournament.players.length > 2) {
-            let match = 0;
-            let eliminatedArray = [];
-    
-            // evaluate the winner of each match
-            for (let i = 0; i < tournament.players.length; i += 2) {
-                match = match + 1;
-                // get the value of the loser and return their name from the object
-                let elim = $(`input[name=round${tournament.round}-match${match}]:not(:checked)`);
-                let elimValue = elim[0].value;
-                // add loser to temporary eliminatedArray
-                eliminatedArray.push(elimValue);
+        // check every match has a selected winner
+        let checked = 0
+        for (let i = 0; i < tournament.players.length; i++) {
+            if ($(`input[id='${tournament.round}${tournament.players[i]}']:checked`).length > 0) {
+                checked = checked + 1;
             }
-            
-            //loop through eliminated array and pull those people from the main players array
-            eliminatedArray.forEach((loser) => {
-                let elimIndex = tournament.players.indexOf(loser);
-                tournament.players.splice(elimIndex, 1);
-            })
-    
-            // start a new round with the remaining players
-            tournament.newRound();
-        } else if (tournament.players.length == 2) {
-            // get rid of confirm button so winner isn't submitted multiples times
-            $(`button.winner-round${tournament.round}`).remove();
+        }
 
-            // evaluate winner
-            let match = 1;
-            let winner = $(`input[name=round${tournament.round}-match${match}]:checked`);
-            let winnerName = winner[0].value;
+        if (checked == (tournament.players.length / 2)) {
+            const players = tournament.players.length;
 
-            // add congratluations message and button for new game + event handler
-            $('.results').append(`
+            // check if this round results in a winner or a consecutive round
+            if (tournament.players.length > 2) {
+                let match = 0;
+                let eliminatedArray = [];
+
+                // evaluate the winner of each match
+                for (let i = 0; i < tournament.players.length; i += 2) {
+                    match = match + 1;
+                    // get the value of the loser and return their name from the object
+                    let elim = $(`input[name=round${tournament.round}-match${match}]:not(:checked)`);
+                    let elimValue = elim[0].value;
+                    // add loser to temporary eliminatedArray
+                    eliminatedArray.push(elimValue);
+                }
+
+                //loop through eliminated array and pull those people from the main players array
+                eliminatedArray.forEach((loser) => {
+                    let elimIndex = tournament.players.indexOf(loser);
+                    tournament.players.splice(elimIndex, 1);
+                })
+
+                // start a new round with the remaining players
+                tournament.newRound();
+            } else if (tournament.players.length == 2) {
+                // get rid of confirm button so winner isn't submitted multiple times
+                $(`button.winner-round${tournament.round}`).remove();
+
+                // evaluate winner
+                let match = 1;
+                let winner = $(`input[name=round${tournament.round}-match${match}]:checked`);
+                let winnerName = winner[0].value;
+
+                // add congratluations message and button for new game + event handler
+                $('.results').append(`
                 <p><span>${winnerName}</span> is the winner! Congratulations!</p>
                 <div><button type="submit" class="new-tournament">New Tournament</button></div>
                 `);
 
-            newTournamentEventHandler();
-        }  else {
-            // I don't know how this error message would occur, but just in case
-            $('.results').append(`Something has gone wrong! Please refresh the page and start the tournament over. The current non-eliminated players are: ${tournament.players}.`);
-        } 
+                newTournamentEventHandler();
+            } else {
+                // I don't know how this error message would occur, but just in case
+                $('.results').append(`Something has gone wrong! Please refresh the page and start the tournament over. The current non-eliminated players are: ${tournament.players}.`);
+            }
+        } else {
+            Swal.fire({
+                title: 'Round Incomplete!',
+                text: 'Please select a winner for each match',
+                type: 'error',
+                confirmButtonText: 'Got it!'
+            })
+        }
+
     })
 }
 
 const newTournamentEventHandler = () => {
-    $('.new-tournament').on('click', function(e) {
+    $('.new-tournament').on('click', function (e) {
         e.preventDefault();
-        location.reload(); 
+        location.reload();
     });
 }
 
